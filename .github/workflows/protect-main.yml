@@ -1,0 +1,16 @@
+name: Protect Main Branch
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  prevent-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prevent direct push to main
+        run: |
+          echo "❌ Direct pushes to the main branch are not allowed!"
+          echo "Please create a feature branch and submit a pull request instead."
+          echo "Use: git checkout -b feature/your-feature-name"
+          exit 1
